@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Name</label>
+    <input type="text" id="name">
+    <label for="">email</label>
+    <input type="text" id="email">
+    <label for="">message</label>
+    <input type="text" id="message">
+    <button onclick="sendData()">click</button>
+    <script>
+        async function sendData(){
+            var formData={
+                name : document.getElementById("name").value,
+                email : document.getElementById("email").value,
+                message : document.getElementById("message").value
+            }
+           try{
+             var response =await fetch("https://formspree.io/f/meokzpkk",{
+                method : "POST",
+                headers : {
+                    "content-type" : "application/json"
+                },
+                body : JSON.stringify(formData)
+            })
+            if(response.ok){
+                alert(response.status)
+            }
+            else{
+                alert(response.status)
+            }
+           }catch(error){
+            alert(error)
+           }
+        }
+    </script>
+</body>
+</html>
