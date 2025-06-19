@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Name</label>
+    <input id="name" type="text">
+     <label for="">Email</label>
+    <input id="email" type="text">
+    <label for="">password</label>
+    <input id="password" type="text">
+    <label for="">city</label>
+    <input id="city" type="text">
+    <button onclick="postData()">click</button>
+    <script>
+
+        async function postData(){
+                    var formData={
+            myName : document.getElementById("name").value,
+            myEmail : document.getElementById("email").value,
+            myPassword : document.getElementById("password").value,
+            city : document.getElementById("city").value,
+
+        }
+        var response = await fetch ("https://crudcrud.com/api/0030a8a01b7c47c4b50cfaa62648bdee/users",{
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"           
+            },
+            body : JSON.stringify(formData)
+        })
+        if(response.ok){
+            alert("data sent successfully")
+        }
+        else{
+            alert("failed to sent data")
+        }
+    }
+    </script>
+</body>
+</html>
